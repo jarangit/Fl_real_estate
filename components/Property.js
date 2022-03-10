@@ -8,7 +8,6 @@ import { GoVerified } from "react-icons/go";
 import millify from "millify";
 
 const Property = ({ property }) => {
-  console.log(property);
   const defaultImage =
     "http://ird.rmuti.ac.th/2020/world/upload/post/picture/full/IRD050520C00001/00001.png";
   const {
@@ -38,6 +37,7 @@ const Property = ({ property }) => {
             src={coverPhoto ? coverPhoto.url : defaultImage}
             width={400}
             height={260}
+            alt = ""
           />
         </Box>
 
