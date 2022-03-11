@@ -6,6 +6,7 @@ import { GoVerified } from "react-icons/go";
 import millify from "millify";
 
 import { baseUrl, fecthApi } from "../../utils/fecthApi";
+import ImageScrollingbar from "../../components/imageScrollingbar";
 
 const PropertyDetail = ({ propertyDetails }) => {
   const {
@@ -26,7 +27,7 @@ const PropertyDetail = ({ propertyDetails }) => {
   } = propertyDetails;
   return (
     <Box maxWidth="1000px" margin="auto" p="4">
-      {photos && <div>Image scrolling</div>}
+      {photos && <ImageScrollingbar data = {photos} />}
 
       <Box w="full" p="6">
         <Flex paddingTop={"2"} alignItems="center">
@@ -86,6 +87,25 @@ const PropertyDetail = ({ propertyDetails }) => {
               <Text fontWeight={"bold"}>{furnishingStatus}</Text>
             </Flex>
           )}
+          <Box>
+            {amenities.length && <Text>Facilites:</Text>}
+            <Flex flexWrap={"wrap"}>
+              {amenities?.map((item, key) => (
+                <Text
+                  key={key}
+                  fontWeight="bold"
+                  color={"blue.400"}
+                  fontSize="l"
+                  p="2"
+                  bg="gray.200"
+                  m="1"
+                  borderRadius={"5"}
+                >
+                  {item.text}
+                </Text>
+              ))}
+            </Flex>
+          </Box>
         </Flex>
       </Box>
     </Box>

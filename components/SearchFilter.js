@@ -51,43 +51,49 @@ const SearchFilter = () => {
     }
   }, [searchTerm]);
   return (
-    <Flex bg={"gray.100"} p="4" justifyContent={"center"} flexWrap="wrap">
-      {filters?.map((item, key) => (
-        <Box key={key}>
-          <Select
-            onChange={(e) =>
-              searchProperties({
-                [item.queryName]: e.target.value,
-              })
-            }
-            placeholder={item.placeholder}
-            w={"fit-content"}
-            p="2"
-          >
-            {item?.items?.map((itemOption, key) => (
-              <option key={key} value={itemOption.value}>
-                {itemOption.name}
-              </option>
-            ))}
-          </Select>
-        </Box>
-      ))}
-      <Flex flexDir="column">
+    <Box bg={"gray.100"}>
+      <Flex p="4" justifyContent={"center"} flexWrap="wrap">
+        {filters?.map((item, key) => (
+          <Box key={key}>
+            <Select
+              onChange={(e) =>
+                searchProperties({
+                  [item.queryName]: e.target.value,
+                })
+              }
+              placeholder={item.placeholder}
+              w={"fit-content"}
+              p="2"
+            >
+              {item?.items?.map((itemOption, key) => (
+                <option key={key} value={itemOption.value}>
+                  {itemOption.name}
+                </option>
+              ))}
+            </Select>
+          </Box>
+        ))}
+      </Flex>
+
+
+      <Box textAlign={"center"}>
         <Button
           border={"1px"}
           borderColor="gray.200"
           marginTop={"2"}
+          w="300px"
+
           onClick={() => setshowLocations(!showLocations)}
         >
           Search Location
         </Button>
 
         {showLocations && (
-          <Flex flexDir={"column"} pos="relative" paddingTop={"2"}>
+          <Flex flexDir={"column"} pos="relative" paddingTop={"2"} textAlign="center">
             <Input
               placeholder="Type Here"
               value={searchTerm}
-              w="300px"
+              w="100%"
               focusBorderColor="gray.300"
               onChange={(e) => setsearchTerm(e.target.value)}
             />
@@ -109,7 +115,9 @@ const SearchFilter = () => {
                   <Box
                     key={key}
                     onClick={(e) => {
-                      searchProperties({ locarionExternalID: item.externalID });
+                      searchProperties({
+                        locarionExternalID: item.externalID,
+                      });
                       setshowLocations(false);
                       setsearchTerm(item.name);
                     }}
@@ -147,8 +155,8 @@ const SearchFilter = () => {
             )}
           </Flex>
         )}
-      </Flex>
-    </Flex>
+      </Box>
+    </Box>
   );
 };
 
