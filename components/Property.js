@@ -23,7 +23,7 @@ const Property = ({ property }) => {
     externalID,
   } = property;
   return (
-    <Link href={`/property/${externalID}`} passHref>
+    <Link href={`/property/${encodeURIComponent(externalID)}`} passHref>
       <Flex
         flexWrap={"wrap"}
         w="420px"
@@ -37,7 +37,7 @@ const Property = ({ property }) => {
             src={coverPhoto ? coverPhoto.url : defaultImage}
             width={400}
             height={260}
-            alt = ""
+            alt=""
           />
         </Box>
 
